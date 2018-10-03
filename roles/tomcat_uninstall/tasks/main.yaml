@@ -1,5 +1,5 @@
 
-- name: Stopping tomcat9 service
+- name: Stopping tomcat service
   systemd: state=stopped name=tomcat
   ignore_errors: True
   tags: tomcat
@@ -13,8 +13,6 @@
   file: path="{{tomcat_dir}}" state=absent
   tags: tomcat
 
-  #- name: Remove tomcat service into init.d directory
-  #file: path=/etc/init.d/tomcat9 state=absent
 
 - name: Remove tomcat service into systemd and reloading daemon
   file: path=/usr/lib/systemd/system/tomcat.service state=absent
